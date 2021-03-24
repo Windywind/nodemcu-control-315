@@ -1,6 +1,6 @@
 do
   wifi.setmode(wifi.SOFTAP)
-  wifi.ap.config({ ssid = "WEB control LED", pwd = "12345678" })
+  wifi.ap.config({ ssid = "WEB-Pin", pwd = "12345678" })
 
   onpin = 4
   offpin = 8
@@ -48,9 +48,13 @@ do
         end
       end
       buf = buf .. "<!DOCTYPE html><html><body><h1>Hello, this is NodeMCU.</h1>"
-      .. "<form src=\"/\">Turn PIN1 <button name=\"act\" value=\"ON\" onclick=\"form.submit()\"> On"
-      .. "<button name=\"act\" value=\"OFF\" onclick=\"form.submit()\"> Off"
-      .. "<button name=\"act\" value=\"STOP\" onclick=\"form.submit()\"> STOP!"
+      .. "<form src=\"/\">Turn PIN1" 
+      .. "<br><br>"
+      .."<button name=\"act\" value=\"ON\" onclick=\"form.submit()\"> &nbsp;On&nbsp; </button>"
+      .. "<br><br>"
+      .. "<button name=\"act\" value=\"OFF\" onclick=\"form.submit()\"> &nbsp;Off&nbsp; </button>"
+      .. "<br><br>"
+      .. "<button name=\"act\" value=\"STOP\" onclick=\"form.submit()\" style=\"width:100px;height:60px\"> &nbsp;STOP!&nbsp; </button>"
       if (_GET.act == "ON") then
         sendpin (onpin,powerpin)
       elseif (_GET.act == "OFF") then
